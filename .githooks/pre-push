@@ -15,7 +15,7 @@ fi
 
 if [ -n "$(git status --porcelain index.json)" ]; then
   git add index.json
-  git commit -m "chore: update plugin index" || exit 1
+  git commit -m "chore(auto): update plugin index" || exit 1
   echo "pre-push: index.json changed; committed as $(git rev-parse --short HEAD)"
 fi
 
