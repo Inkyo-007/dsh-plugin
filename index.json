@@ -34,11 +34,11 @@
       "versions": [
         {
           "version": "1.1.0",
-          "publishTimestamp": 1795069147,
+          "publishTimestamp": 1795072637,
           "source": {
             "type": "git",
             "url": "https://github.com/Inkyo-007/dsh-plugin",
-            "commit": "9827603a96e212837f65f07615e8ce754f90b6f6",
+            "commit": "8e623cd5143927b735b2e6687734fabf5cba8424",
             "path": "archify"
           }
         }
@@ -62,11 +62,11 @@
       "versions": [
         {
           "version": "1.0.0",
-          "publishTimestamp": 1795069147,
+          "publishTimestamp": 1795072637,
           "source": {
             "type": "git",
             "url": "https://github.com/Inkyo-007/dsh-plugin",
-            "commit": "9827603a96e212837f65f07615e8ce754f90b6f6",
+            "commit": "8e623cd5143927b735b2e6687734fabf5cba8424",
             "path": "fluent"
           }
         }
