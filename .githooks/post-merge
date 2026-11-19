@@ -1,0 +1,21 @@
+#!/bin/sh
+# Regenerate the plugin market index after merging into main. A merge can
+# bring in new plugin commits; pin the index to the merged HEAD.
+#
+# Installed via `git config core.hooksPath .githooks`.
+
+branch=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
+[ "$branch" = "main" ] || exit 0
+
+if ! node scripts/build-index.mjs; then
+  echo "post-merge: index generation failed; run it manually" >&2
+  exit 0
+fi
+
+if [ -n "$(git status --porcelain index.json)" ]; then
+  git add index.json
+  git commit -m "chore: update plugin index" \
+    && echo "post-merge: index.json changed; committed as $(git rev-parse --short HEAD)"
+fi
+
+exit 0
