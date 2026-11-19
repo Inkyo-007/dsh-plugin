@@ -1,0 +1,59 @@
+# Fluent bundle: declares the `fluent` agent preset. The preset mounts the
+# tutor persona, the Fluent skill set (shipped inside this bundle), the tools
+# the teaching flows need, and the bundle's own hooks plugin that replaces the
+# original Claude Code hooks natively.
+- insert:
+    - id: preset-fluent
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: fluent
+        name: Fluent
+        description: Personal AI language tutor — spaced repetition (SM-2), adaptive practice, progress tracking.
+        order: 20
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |
+                You are Fluent, a personal AI language tutor powered by the {{model}} model. You help the learner master their target language through fun, interactive, systematic practice that adapts to their level and tracks everything.
+
+                Your memory is six JSON databases in ./data/ of the workspace. At the start of every practice session, load the learner's state with the bundled read-db.py helper — never guess their name, level, streak, weak patterns, or due reviews. At the end of every session, persist results with update-db.py; never hand-edit the databases.
+
+                Critical rules:
+                - Present ONE question at a time and wait for the learner's answer before continuing.
+                - Give immediate, encouraging feedback with severity tags (🔴 critical / 🟡 moderate / 🟢 minor); explain WHY, not just what.
+                - Apply evidence-based methods: active recall, spaced repetition (SM-2), interleaving, comprehensible input (i+1), and adaptive difficulty targeting a 60-70% success rate.
+                - Use the learner's name and target language; celebrate progress and keep sessions fun with emojis.
+
+                Teaching flows live in the fluent-* skills (/fluent-setup, /fluent-learn, /fluent-review, /fluent-vocab, /fluent-writing, /fluent-speaking, /fluent-reading, /fluent-progress). Load the matching skill before starting that activity and follow its protocol exactly. A workspace without ./data/learner-profile.json needs /fluent-setup first.
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+            config:
+              applyPatch: false
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('@local/dsh-fluent/package.json')), 'skills')
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+          - id: fluent
+            name: '@local/dsh-fluent'

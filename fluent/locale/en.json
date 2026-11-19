@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Fluent",
+    "description": "Personal AI language tutor preset. Adaptive practice sessions (writing, speaking, vocabulary, reading), spaced repetition with the SM-2 algorithm, mastery stars, streaks, and six local JSON databases that remember every mistake. Start with /fluent-setup, practice daily with /fluent-review and /fluent-learn. Requires python3 for the database helpers.",
+    "detail": "docs/DETAIL.md"
+  }
+}

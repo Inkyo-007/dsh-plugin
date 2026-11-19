@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Fluent",
+    "description": "私人 AI 语言家教预设。自适应练习(写作、口语、词汇、阅读)、SM-2 间隔重复、掌握度星级、连续学习天数,以及记住每个错误的六个本地 JSON 数据库。从 /fluent-setup 开始建档,每天用 /fluent-review 复习、/fluent-learn 学习。数据库助手脚本需要 python3。",
+    "detail": "docs/DETAIL.md"
+  }
+}

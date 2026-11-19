@@ -1,0 +1,28 @@
+{
+  "name": "@local/dsh-fluent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fluent — personal AI language tutor preset for DeepSeek Harness. Spaced repetition (SM-2), adaptive practice, and progress tracking across six local databases.",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "skills",
+    "scripts",
+    "tests"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
