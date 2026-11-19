@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Archify architecture diagrams",
+    "description": "Creates validated architecture, workflow, sequence, data-flow, lifecycle/state, ERD, class, tree, timeline, and waterfall diagrams as explorable standalone HTML files with dark/light themes, motion, and image/SVG/WebM export. Accepts a requirements description or Mermaid source, and can inspect repository evidence for code-backed diagrams.\n\nUsage: ask the agent in any session, for example \"Use the archify skill to map this repository's runtime architecture\". Generated JSON and HTML are ordinary workspace files — ask the agent for their exact paths and open the HTML in a browser; shell-created files do not appear in the Produced Files strip automatically.\n\nNotes: the bundled skill includes an optional, notification-only update check (set ARCHIFY_UPDATE_CHECK_DISABLED=1 to disable it) and may fetch pinned remote brand assets; the adapter itself makes no network requests and adds no telemetry. Disabling this bundle removes the archify skill from sessions."
+  }
+}
