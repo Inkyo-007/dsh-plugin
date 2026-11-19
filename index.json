@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Inkyo's DSH plugins",
+    "zh": "Inkyo 的 DSH 插件"
+  },
+  "description": {
+    "en": "Personal DeepSeek Harness bundle collection, installed from pinned Git commits.",
+    "zh": "个人 DSH 插件合集，通过钉死 commit 的 Git 源安装。"
+  },
+  "plugins": [
+    {
+      "name": "@tt-a1i/archify-dsh",
+      "title": {
+        "en": "Archify architecture diagrams",
+        "zh": "Archify 架构图"
+      },
+      "description": {
+        "en": "Creates validated architecture, workflow, sequence, data-flow, lifecycle/state, ERD, class, tree, timeline, and waterfall diagrams as explorable standalone HTML files with dark/light themes, motion, and image/SVG/WebM export. Accepts a requirements description or Mermaid source, and can inspect repository evidence for code-backed diagrams.\n\nUsage: ask the agent in any session, for example \"Use the archify skill to map this repository's runtime architecture\". Generated JSON and HTML are ordinary workspace files — ask the agent for their exact paths and open the HTML in a browser; shell-created files do not appear in the Produced Files strip automatically.\n\nNotes: the bundled skill includes an optional, notification-only update check (set ARCHIFY_UPDATE_CHECK_DISABLED=1 to disable it) and may fetch pinned remote brand assets; the adapter itself makes no network requests and adds no telemetry. Disabling this bundle removes the archify skill from sessions.",
+        "zh": "将系统架构、工作流、时序、数据流、生命周期/状态机、ERD、类图、树形结构、时间线和瀑布图生成为可交互探索的独立 HTML 文件，支持明暗主题、动画效果，并可导出为图片 / SVG / WebM。既可以根据文字需求或 Mermaid 源码直接绘图，也可以结合仓库代码证据生成有据可依的架构图。\n\n使用方法：在任意会话中直接对 agent 提出需求，例如「使用 archify 技能梳理这个仓库的运行时架构」。生成的 JSON 规格文件和 HTML 图是工作区中的普通文件——让 agent 返回它们的确切路径，然后用浏览器打开 HTML 即可；通过 shell 创建的文件不会自动出现在「产出文件」栏中。\n\n说明：内置技能包含一个仅用于提示的可选更新检查（设置环境变量 ARCHIFY_UPDATE_CHECK_DISABLED=1 可关闭），绘制品牌图标时可能访问网络获取固定摘要的品牌素材；适配器本身不发起网络请求、不含遥测。停用此插件后，会话中将不再提供 archify 技能。"
+      },
+      "repository": {
+        "url": "https://github.com/Inkyo-007/dsh-plugin",
+        "directory": "archify"
+      },
+      "metadata": {
+        "keywords": [
+          "dsh-plugin",
+          "deepseek-harness",
+          "agent-skill",
+          "architecture-diagram"
+        ]
+      },
+      "versions": [
+        {
+          "version": "1.1.0",
+          "publishTimestamp": 1795069147,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/Inkyo-007/dsh-plugin",
+            "commit": "9827603a96e212837f65f07615e8ce754f90b6f6",
+            "path": "archify"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@local/dsh-fluent",
+      "title": {
+        "en": "Fluent",
+        "zh": "Fluent"
+      },
+      "description": {
+        "en": "Personal AI language tutor preset. Adaptive practice sessions (writing, speaking, vocabulary, reading), spaced repetition with the SM-2 algorithm, mastery stars, streaks, and six local JSON databases that remember every mistake. Start with /fluent-setup, practice daily with /fluent-review and /fluent-learn. Requires python3 for the database helpers.",
+        "zh": "私人 AI 语言家教预设。自适应练习(写作、口语、词汇、阅读)、SM-2 间隔重复、掌握度星级、连续学习天数,以及记住每个错误的六个本地 JSON 数据库。从 /fluent-setup 开始建档,每天用 /fluent-review 复习、/fluent-learn 学习。数据库助手脚本需要 python3。"
+      },
+      "icon": "fluent/icon.svg",
+      "repository": {
+        "url": "https://github.com/Inkyo-007/dsh-plugin",
+        "directory": "fluent"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1795069147,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/Inkyo-007/dsh-plugin",
+            "commit": "9827603a96e212837f65f07615e8ce754f90b6f6",
+            "path": "fluent"
+          }
+        }
+      ]
+    }
+  ]
+}
