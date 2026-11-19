@@ -25,22 +25,16 @@ Inkyo 的 DeepSeek Harness 插件合集。
 
 ## 维护工作流
 
-日常只需正常提交和推送，索引会自动更新：
+日常只需正常提交和推送：
 
 ```bash
 git commit -am "feat: ..."
-git push        # pre-push 钩子自动重生成 index.json，如有变化自动补一个 chore 提交
+git push        # GitHub Actions 自动重生成 index.json，如有变化由 bot 提交回 main
 ```
 
-合并分支进 `main` 时，`post-merge` 钩子做同样的事。
+workflow 见 [.github/workflows/update-index.yml](.github/workflows/update-index.yml)。由 `GITHUB_TOKEN` 推送的 bot 提交不会再次触发 workflow，不会循环。
 
-### hooks 安装（新机器 clone 后必做）
-
-`core.hooksPath` 是本地配置，不随克隆分发：
-
-```bash
-git config core.hooksPath .githooks
-```
+注意：推送后远端的 `index.json` 有约一分钟的更新延迟；本地执行 `git pull` 即可拿到 bot 的索引提交。
 
 ### 手动重新生成索引
 

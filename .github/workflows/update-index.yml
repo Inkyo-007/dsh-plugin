@@ -1,0 +1,39 @@
+name: Update plugin index
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-index
+  cancel-in-progress: false
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate index.json
+        run: node scripts/build-index.mjs --repo "https://github.com/${{ github.repository }}"
+
+      - name: Commit and push if changed
+        run: |
+          if [ -n "$(git status --porcelain index.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.json
+            git commit -m "chore(auto): update plugin index"
+            git push origin HEAD:main
+            echo "index.json updated and pushed"
+          else
+            echo "index.json is up to date"
+          fi
